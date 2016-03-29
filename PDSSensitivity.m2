@@ -14,11 +14,11 @@ needsPackage "RationalPoints" -- for solving varieties
 
 export {
      -- funcs
-     makeRing, getDivisors, composeEfficiently, allSteadyStatesIndependent, 
-     allCyclesIndependent, computeIndependentSS, computeIndependentCycles, computeSensitivity,
+     "makeRing", "getDivisors", "composeEfficiently", "allSteadyStatesIndependent", 
+     "allCyclesIndependent", "computeIndependentSS", "computeIndependentCycles", "computeSensitivity",
      
      -- options
-     fileOut
+     "fileOut"
      }
 
 
@@ -166,7 +166,7 @@ allCyclesIndependent (Matrix, ZZ) := (F, m) -> (
 computeIndependentSS = method()
 computeIndependentSS (Matrix) := (F) -> (
    QR := ring F;
-   I := ideal apply( flatten entries F, gens QR, (fx) -> f -x );
+   I := ideal apply( flatten entries F, gens QR, (f,x) -> f - x );
    onesList := toList(apply ( gens coefficientRing QR, i -> i =>1)); -- build list to plug in 1's
    zeroesList := toList(apply ( gens coefficientRing QR, i -> i=>0));
    I0 := sub(I, zeroesList); -- plug in 0 to ideal
